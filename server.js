@@ -36,24 +36,7 @@ app.post("/users",(req,res)=>{
      return res.status(200).json(data);
     })
 })
-app.put("/users/:id",(req,res)=>{
-     const userId=req.params.id;
-     const{username,Password}=req.body;
-     const sql="UPDATE users SET username=? ,Password=? WHERE id=?";
-     db.query(sql,[userId,username,Password],(err,data)=>{
-          if(err) return res.status(500).json("Failed",err);
-          return res.status(200).json(data)
-     })
-})
-app.delete("/users/:id",(req,res)=>{
-     const userId =req.params.id;
-     // const {username,Password}=req.body;
-     const sql ="DELETE FROM users WHERE id=?";
-     db.query(sql,[userId],(err,data)=>{
-          if(err) return res.status(500).json("Failed to Update");
-     return res.status(200).json(data)
-     })
-})
+
 app.listen(5000,()=>{
      console.log("My App is running on http://localhost:5000")
 })
